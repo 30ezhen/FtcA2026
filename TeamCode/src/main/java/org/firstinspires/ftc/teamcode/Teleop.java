@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 public class Teleop {
-    // hi
+    // Cn
+    public static void main(String[] args){
+        System.out.println("Cancer");
+    }
 
 }
