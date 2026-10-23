@@ -21,8 +21,7 @@ import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 // BR: 1
 // TL: 2
 // BL: 3
-
-// temp stuff so i can push Iakfjleridjfopvervji;wekf
+//temp stuff so i can push Iakfjleridjfopvervji;wekf
 
 public class Teleop extends LinearOpMode {
     final int FLFrontDir = -1;
