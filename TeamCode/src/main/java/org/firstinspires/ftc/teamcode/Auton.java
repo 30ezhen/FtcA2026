@@ -13,12 +13,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Auton")
 public class Auton {
-    private ElapsedTime runtime = new ElapsedTime();
+    private final ElapsedTime runtime = new ElapsedTime();
     private DcMotor frontLeftDrive=null;
     private DcMotor backLeftDrive=null;
     private DcMotor frontRightDrive=null;
     private DcMotor backRightDrive=null;
-
+    @Override
     public void runOpMode() throws InterruptedException{
         frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_drive");
         backLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
