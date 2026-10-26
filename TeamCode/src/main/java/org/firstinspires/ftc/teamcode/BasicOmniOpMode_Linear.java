@@ -78,10 +78,10 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
 
         // Initialize the hardware variables. Note that the strings used here must correspond
         // to the names assigned during the robot configuration step on the DS or RC devices.
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_drive");
-        backLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
-        backRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
+        frontLeftDrive = hardwareMap.get(DcMotor.class, "leftFront");
+        backLeftDrive = hardwareMap.get(DcMotor.class, "leftBack");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
+        backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -149,7 +149,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
             frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
             backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
-            */
+
+*/
 
             // Send calculated power to wheels
             frontLeftDrive.setPower(frontLeftPower);
