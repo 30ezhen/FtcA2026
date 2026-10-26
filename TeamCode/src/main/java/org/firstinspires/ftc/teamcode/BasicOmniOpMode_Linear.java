@@ -162,6 +162,9 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
             telemetry.addData("Back  left/Right", "%4.2f, %4.2f", backLeftPower, backRightPower);
+            telemetry.addData("Left stick x", gamepad1.left_stick_x);
+            telemetry.addData("Left stick y", -gamepad1.left_stick_y);
+            telemetry.addData("Right stick x", gamepad1.right_stick_x);
             telemetry.update();
         }
     }
