@@ -72,7 +72,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
     private DcMotor backLeftDrive = null;
     private DcMotor frontRightDrive = null;
     private DcMotor backRightDrive = null;
-
+    private DcMotor intakeMotor=null;
+    private double intakePower=0.8;
     @Override
     public void runOpMode() {
 
@@ -82,6 +83,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         backLeftDrive = hardwareMap.get(DcMotor.class, "leftBack");
         frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
+        intakeMotor=hardwareMap.get(DcMotor.class, "intake");
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -144,11 +146,12 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             //      the setDirection() calls above.
             // Once the correct motors move in the correct direction re-comment this code.
 
-
+            /*
             frontLeftPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
             backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad  // uncomment AFTER motors deployed properly
             frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
             backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
+            */
 
 
 
@@ -158,6 +161,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             backLeftDrive.setPower(backLeftPower);
             backRightDrive.setPower(backRightPower);
 
+            //Intake
+            intakeMotor.setPower(gamepad1.a ? intakePower : 0.0);
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
