@@ -146,14 +146,27 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             //      the setDirection() calls above.
             // Once the correct motors move in the correct direction re-comment this code.
 
-            /*
-            frontLeftPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
-            backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad  // uncomment AFTER motors deployed properly
+            if (gamepad1.yWasPressed()) {
+                frontLeftPower  = 1.0;  // X gamepad
+                backLeftPower   =  1.0;  // A gamepad  // uncomment AFTER motors deployed properly
+                frontRightPower = 1.0;  // Y gamepad
+                backRightPower  = 1.0;  // B gamepad
+            }
+
+
+            if (gamepad1.aWasPressed()) {
+                frontLeftPower = -1.0;
+                backLeftPower = -1.0;
+                frontRightPower = -1.0;
+                backRightPower = -1.0;
+            }
+
+/*
+            frontLeftPower  = gamepad1.y ? 1.0 : 0.0;  // X gamepad
+            backLeftPower   = gamepad1.y ? 1.0 : 0.0;  // A gamepad  // uncomment AFTER motors deployed properly
             frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
-            backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
-            */
-
-
+            backRightPower  = gamepad1.y ? 1.0 : 0.0;  // B gamepad
+*/
 
             // Send calculated power to wheels
             frontLeftDrive.setPower(frontLeftPower);
