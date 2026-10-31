@@ -136,21 +136,13 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
                 backRightPower /= max;
             }
 
-            // This is test code:
-            //
-            // Uncomment the following code to test your motor directions.
-            // Each button should make the corresponding motor run FORWARD.
-            //   1) First get all the motors to take to correct positions on the robot
-            //      by adjusting your Robot Configuration if necessary.
-            //   2) Then make sure they run in the correct direction by modifying the
-            //      the setDirection() calls above.
-            // Once the correct motors move in the correct direction re-comment this code.
 
+/*
             if (gamepad1.yWasPressed()) {
-                frontLeftPower  = 1.0;  // X gamepad
-                backLeftPower   =  1.0;  // A gamepad  // uncomment AFTER motors deployed properly
-                frontRightPower = 1.0;  // Y gamepad
-                backRightPower  = 1.0;  // B gamepad
+                frontLeftPower  = 1.0;
+                backLeftPower   =  1.0;
+                frontRightPower = 1.0;
+                backRightPower  = 1.0;
             }
 
 
@@ -160,8 +152,19 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
                 frontRightPower = -1.0;
                 backRightPower = -1.0;
             }
-
+*/
 /*
+
+// This is test code:
+            //
+            // Uncomment the following code to test your motor directions.
+            // Each button should make the corresponding motor run FORWARD.
+            //   1) First get all the motors to take to correct positions on the robot
+            //      by adjusting your Robot Configuration if necessary.
+            //   2) Then make sure they run in the correct direction by modifying the
+            //      the setDirection() calls above.
+            // Once the correct motors move in the correct direction re-comment this code.
+
             frontLeftPower  = gamepad1.y ? 1.0 : 0.0;  // X gamepad
             backLeftPower   = gamepad1.y ? 1.0 : 0.0;  // A gamepad  // uncomment AFTER motors deployed properly
             frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
@@ -175,7 +178,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             backRightDrive.setPower(backRightPower);
 
             //Intake
-            intakeMotor.setPower(gamepad1.a ? intakePower : 0.0);
+            intakeMotor.setPower(gamepad1.right_bumper ? intakePower : 0.0);
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
@@ -183,6 +186,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             telemetry.addData("Left stick x", gamepad1.left_stick_x);
             telemetry.addData("Left stick y", -gamepad1.left_stick_y);
             telemetry.addData("Right stick x", gamepad1.right_stick_x);
+            telemetry.addData("Intake work", gamepad1.right_bumper);
             telemetry.update();
         }
     }
