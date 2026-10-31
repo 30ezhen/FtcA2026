@@ -74,7 +74,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
     private DcMotor backRightDrive = null;
     private DcMotor intakeMotor1=null;
     private DcMotor intakeMotor2=null;
-    private double intakePower=0.8;
+    private final double intakePower=0.8;
     @Override
     public void runOpMode() {
 
