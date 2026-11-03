@@ -74,7 +74,10 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
     private DcMotor backRightDrive = null;
     private DcMotor intakeMotor1=null;
     private DcMotor intakeMotor2=null;
-    private final double intakePower=0.8;
+    private DcMotor shooterMotor=null;
+
+    private final float intakePower=1;
+    private final float shooterPower=1;
     @Override
     public void runOpMode() {
 
@@ -86,6 +89,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
         intakeMotor1=hardwareMap.get(DcMotor.class, "lowerIntake");
         intakeMotor2=hardwareMap.get(DcMotor.class, "middleIntake");
+        shooterMotor=hardwareMap.get(DcMotor.class, "shooter");
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -180,8 +184,9 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             backRightDrive.setPower(backRightPower);
 
             //Intake
-            intakeMotor1.setPower(gamepad1.right_bumper ? intakePower : 0.0);
-            intakeMotor2.setPower(gamepad1.right_bumper ? intakePower: 0.0);
+            intakeMotor1.setPower(gamepad1.right_bumper ? intakePower : 0);
+            intakeMotor2.setPower(gamepad1.right_bumper ? intakePower : 0);
+            shooterMotor.setPower(gamepad1.left_bumper ? shooterPower : 0);
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
@@ -190,6 +195,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             telemetry.addData("Left stick y", -gamepad1.left_stick_y);
             telemetry.addData("Right stick x", gamepad1.right_stick_x);
             telemetry.addData("Intake work", gamepad1.right_bumper);
+            telemetry.addData("Shooter work", gamepad1.left_bumper);
             telemetry.update();
         }
     }
