@@ -103,6 +103,9 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         // Keep testing until ALL the wheels move the robot forward when you push the left joystick forward.
         frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        intakeMotor1.setDirection(DcMotor.Direction.REVERSE);
+        intakeMotor2.setDirection(DcMotor.Direction.REVERSE);
+        shooterMotor.setDirection(DcMotor.Direction.REVERSE);
         frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
         backRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
@@ -183,9 +186,9 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             backLeftDrive.setPower(backLeftPower);
             backRightDrive.setPower(backRightPower);
 
-            //Intake
+            //Intake+++
             intakeMotor1.setPower(gamepad1.right_bumper ? intakePower : 0);
-            intakeMotor2.setPower(gamepad1.right_bumper ? intakePower : 0);
+            intakeMotor2.setPower(gamepad1.left_bumper ? intakePower : 0);
             shooterMotor.setPower(gamepad1.left_bumper ? shooterPower : 0);
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
