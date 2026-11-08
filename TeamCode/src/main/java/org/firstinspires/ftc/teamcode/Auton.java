@@ -19,7 +19,7 @@ public class Auton extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        frontRightDrive = hardwareMap.get(DcMotor.class, "leftFront");
+        frontLeftDrive = hardwareMap.get(DcMotor.class, "leftFront");
         backLeftDrive = hardwareMap.get(DcMotor.class, "leftBack");
         frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
