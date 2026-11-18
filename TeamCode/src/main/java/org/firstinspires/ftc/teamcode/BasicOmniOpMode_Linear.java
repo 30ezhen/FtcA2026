@@ -73,12 +73,12 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
     private DcMotor backLeftDrive = null;
     private DcMotor frontRightDrive = null;
     private DcMotor backRightDrive = null;
-    /*private DcMotor intakeMotor1=null;
-    private DcMotor intakeMotor2=null;
+    private DcMotor intakeMotor=null;
+    private DcMotor middleMotor1=null;
+    private DcMotor middleMotor2=null;
     private DcMotor shooterMotor=null;
-
     private final float intakePower=1;
-    private final float shooterPower=1;*/
+    private final float shooterPower=1;
     @Override
     public void runOpMode() {
 
@@ -88,9 +88,11 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         backLeftDrive = hardwareMap.get(DcMotor.class, "leftBack");
         frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
-        /*intakeMotor1=hardwareMap.get(DcMotor.class, "lowerIntake");
-        intakeMotor2=hardwareMap.get(DcMotor.class, "middleIntake");
-        shooterMotor=hardwareMap.get(DcMotor.class, "shooter");*/
+        intakeMotor=hardwareMap.get(DcMotor.class, "intake");
+        shooterMotor=hardwareMap.get(DcMotor.class, "shooter");
+        middleMotor1=hardwareMap.get(DcMotor.class, "middle1");
+        middleMotor2=hardwareMap.get(DcMotor.class, "middle2");
+
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -188,9 +190,11 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             backRightDrive.setPower(backRightPower);
 
             //Intake+++
-            /*intakeMotor1.setPower(gamepad1.right_bumper ? intakePower : 0);
-            intakeMotor2.setPower(gamepad1.left_bumper ? intakePower : 0);
-            shooterMotor.setPower(gamepad1.left_bumper ? shooterPower : 0);*/
+            intakeMotor.setPower(gamepad1.right_bumper ? intakePower : 0);
+            shooterMotor.setPower(gamepad1.left_bumper ? shooterPower: 0);
+            middleMotor1.setPower(gamepad1.right_bumper ? intakePower : 0);
+            middleMotor2.setPower(gamepad1.right_bumper ? intakePower : 0);
+
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
