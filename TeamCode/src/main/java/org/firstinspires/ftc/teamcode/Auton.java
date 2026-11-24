@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class Auton extends LinearOpMode {
     // Tune these
     final double DRIVE_POWER = 0.5;
+    //final double SHOOTER_POWER=1;
     final double FORWARD_TIME = 1.0;  // seconds
     final double PAUSE_TIME = 1.0;    // seconds stopped
     final double BACK_TIME = 1.0;     // seconds
@@ -16,6 +17,7 @@ public class Auton extends LinearOpMode {
     final int[] dir = {-1, 1, 1, 1};
 
     DcMotor frontLeftDrive, backLeftDrive, frontRightDrive, backRightDrive;
+    //DcMotor middleMotor1, middleMotor2, shooter;
 
     @Override
     public void runOpMode() {
@@ -23,6 +25,9 @@ public class Auton extends LinearOpMode {
         backLeftDrive = hardwareMap.get(DcMotor.class, "leftBack");
         frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
+        //middleMotor1=hardwareMap.get(DcMotor.class, "middle1");
+        //middleMotor2=hardwareMap.get(DcMotor.class, "middle2");
+        //shooter=hardwareMap.get(DcMotor.class, "shooter");
 /*
         for (DcMotor m : new DcMotor[]{frontLeftDrive, backLeftDrive, frontRightDrive, backRightDrive}) {
             m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -34,8 +39,11 @@ public class Auton extends LinearOpMode {
         waitForStart();
 
         drive(DRIVE_POWER, FORWARD_TIME, "Forward");
+        turnRight(1, 0.5);
+        //shoot(1, 15);
         drive(0, PAUSE_TIME, "Stopped");
-        drive(-DRIVE_POWER, BACK_TIME, "Backward");
+        turnRight(1, 0.5);
+        drive(DRIVE_POWER, FORWARD_TIME, "Backward");
         drive(0, 0, "Done");
     }
 
@@ -53,5 +61,34 @@ public class Auton extends LinearOpMode {
         while (opModeIsActive() && System.currentTimeMillis() < end) {
             idle();
         }
+    }
+    /*private void shoot(double shooterPower, double seconds){
+        shooter.setPower(shooterPower);
+
+        long end = System.currentTimeMillis() + (long) (seconds * 1000);
+        while (opModeIsActive() && System.currentTimeMillis() < end) {
+            idle();
+        }
+        shooter.setPower(0);
+    }*/
+
+    private void turnRight(double power, double seconds){
+        double yaw=power;
+        double frontLeftPower=yaw;
+        double frontRightPower=-yaw;
+        double backLeftPower=yaw;
+        double backRightPower=-yaw;
+        frontLeftDrive.setPower(frontLeftPower);
+        frontRightDrive.setPower(frontRightPower);
+        backLeftDrive.setPower(backLeftPower);
+        backRightDrive.setPower(backRightPower);
+        long end = System.currentTimeMillis() + (long) (seconds * 1000);
+        while (opModeIsActive() && System.currentTimeMillis() < end) {
+            idle();
+        }
+        frontLeftDrive.setPower(0);
+        frontRightDrive.setPower(0);
+        backLeftDrive.setPower(0);
+        backRightDrive.setPower(0);
     }
 }

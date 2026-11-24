@@ -76,9 +76,9 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
     private DcMotor intakeMotor=null;
     private DcMotor middleMotor1=null;
     private DcMotor middleMotor2=null;
-    private DcMotor shooterMotor=null;
+    //private DcMotor shooterMotor=null;
     private final float intakePower=1;
-    private final float shooterPower=1;
+    //private final float shooterPower=1;
     @Override
     public void runOpMode() {
 
@@ -89,7 +89,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
         intakeMotor=hardwareMap.get(DcMotor.class, "intake");
-        shooterMotor=hardwareMap.get(DcMotor.class, "shooter");
+        //shooterMotor=hardwareMap.get(DcMotor.class, "shooter");
         middleMotor1=hardwareMap.get(DcMotor.class, "middle1");
         middleMotor2=hardwareMap.get(DcMotor.class, "middle2");
 
@@ -191,7 +191,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
 
             //Intake+++
             intakeMotor.setPower(gamepad1.right_bumper ? intakePower : 0);
-            shooterMotor.setPower(gamepad1.left_bumper ? shooterPower: 0);
+            //shooterMotor.setPower(gamepad1.left_bumper ? shooterPower: 0);
             middleMotor1.setPower(gamepad1.right_bumper ? intakePower : 0);
             middleMotor2.setPower(gamepad1.right_bumper ? intakePower : 0);
 
