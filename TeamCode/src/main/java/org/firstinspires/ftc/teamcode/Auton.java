@@ -17,7 +17,7 @@ public class Auton extends LinearOpMode {
     final int[] dir = {-1, 1, 1, 1};
 
     DcMotor frontLeftDrive, backLeftDrive, frontRightDrive, backRightDrive;
-    //DcMotor middleMotor1, middleMotor2, shooter;
+    DcMotor middleMotor1, middleMotor2, shooter;
 
     @Override
     public void runOpMode() {
@@ -25,15 +25,15 @@ public class Auton extends LinearOpMode {
         backLeftDrive = hardwareMap.get(DcMotor.class, "leftBack");
         frontRightDrive = hardwareMap.get(DcMotor.class, "rightFront");
         backRightDrive = hardwareMap.get(DcMotor.class, "rightBack");
-        //middleMotor1=hardwareMap.get(DcMotor.class, "middle1");
-        //middleMotor2=hardwareMap.get(DcMotor.class, "middle2");
-        //shooter=hardwareMap.get(DcMotor.class, "shooter");
-/*
+        middleMotor1=hardwareMap.get(DcMotor.class, "middle1");
+        middleMotor2=hardwareMap.get(DcMotor.class, "middle2");
+        shooter=hardwareMap.get(DcMotor.class, "shooter");
+
         for (DcMotor m : new DcMotor[]{frontLeftDrive, backLeftDrive, frontRightDrive, backRightDrive}) {
             m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         }
-*/
+
         telemetry.addLine("Ready");
         telemetry.update();
         waitForStart();
@@ -62,7 +62,7 @@ public class Auton extends LinearOpMode {
             idle();
         }
     }
-    /*private void shoot(double shooterPower, double seconds){
+    private void shoot(double shooterPower, double seconds){
         shooter.setPower(shooterPower);
 
         long end = System.currentTimeMillis() + (long) (seconds * 1000);
@@ -70,7 +70,7 @@ public class Auton extends LinearOpMode {
             idle();
         }
         shooter.setPower(0);
-    }*/
+    }
 
     private void turnRight(double power, double seconds){
         double yaw=power;
